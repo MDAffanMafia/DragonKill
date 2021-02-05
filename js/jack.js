@@ -1,11 +1,13 @@
 /*this project is a game developed in pure js
 Developer:MD Affan MD Habibuddin
-Lines of code:
+Lines of code:466(till now)
 */ 
 const canvas=document.getElementById('canvas');
 const ctx=canvas.getContext('2d');
-canvas.width=window.innerWidth;
-canvas.height=window.innerHeight;
+canvas.width=1200;
+canvas.height=900;
+//for the score
+
 //loadind images
 //declaring image referencers
 //for me player
@@ -15,6 +17,8 @@ canvas.height=window.innerHeight;
   let imageMeD=[];
   //for the metroit
   let imageMFire=[];
+  let enemyFire=[];
+  let imageBomb=[];
   //for enemys
   let imageRedS=[];
   let imageBooT=[];
@@ -26,7 +30,7 @@ canvas.height=window.innerHeight;
   let metoCount=0;
   let fCount=0;
   let SpCount=0;
-  let score=0;
+  let score=1;
   var imageMe=new Image;
   function load(url){
     return new Promise(r=>{let i=new Image();i.onload=(()=>r(i)); i.src=url;});
@@ -70,6 +74,9 @@ canvas.height=window.innerHeight;
       imageMFire[1]=await load("img/fire002.png");
       imageMFire[2]=await load("img/fire003.png");
       imageMFire[3]=await load("img/fire004.png");
+      //loading the bombs
+      imageBomb[0]=await load("/img/bomb1.png");
+      imageBomb[1]=await load("/img/bomb2.png");
     }catch(err){
         document.write("failed to exe");
     }
@@ -100,7 +107,7 @@ moving=false;
         height:48,
         stdFrameX:3,
         stdX:800,
-        stdY:Math.random()*canvas.height,
+        stdY:Math.random()*canvas.height+100,
         speed:(Math.random()*2.4)+3.5, 
         action:'right',
     }
@@ -109,7 +116,7 @@ moving=false;
         width:50,
         height:48,
         BoX:200,
-        BoY:Math.random()*canvas.height,
+        BoY:Math.random()*canvas.height+100,
         speed:(Math.random()*2.6)+3.7,
     }
     //for enemy 3
@@ -117,7 +124,7 @@ moving=false;
         width:32,
         height:48,
         mtX:500,
-        mtY:Math.random()*canvas.height,
+        mtY:Math.random()*canvas.height+100,
         speed:(Math.random()*2.3)+3.9,
     }
     fire={
@@ -177,11 +184,16 @@ function update(){
     if(Math.abs((affan.stdX+30)-me.meX)<me.mwidth && Math.abs(affan.stdY-me.meY)<me.mheight ||Math.abs((affan.stdX+30)-fire.fX)<fire.width && Math.abs(affan.stdY-fire.fY)<fire.height)
     {
         score+=1;
+        document.getElementById('score').innerHTML=score;
+        if(score>20&&score%2==0)
+        {
+            affan.speed+=0.05;
+        }
         spacePressed=false;
         SpCount=0;
         fire.fX=-10;
         fire.fY=-10;
-        affan.stdX=window.innerWidth-affan.width;
+        affan.stdX=canvas.width-affan.width;
         affan.stdY=Math.random()*canvas.height-affan.height;
         console.log(score);
     }
@@ -203,6 +215,11 @@ function update(){
     if(Math.abs((booT.BoX+30)-me.meX)<me.mwidth && Math.abs(booT.BoY-me.meY)<me.mheight ||Math.abs((booT.BoX+30)-fire.fX)<fire.width && Math.abs(booT.BoY-fire.fY)<fire.height)
           {
              score+=1;
+          document.getElementById('score').innerHTML=score;
+             if(score>20&&score%2==0)
+        {
+             booT.speed+=0.05;
+        }
              spacePressed=false;
              SpCount=0;
              fire.fX=-10;
@@ -226,6 +243,11 @@ function update(){
     if(Math.abs((metO.mtX+30)-me.meX)<me.mwidth && Math.abs(metO.mtY-me.meY)<me.mheight ||Math.abs((metO.mtX+30)-fire.fX)<fire.width && Math.abs(metO.mtY-fire.fY)<fire.height)
     {
         score+=1;
+        document.getElementById('score').innerHTML=score;
+        if(score>20&&score%2==0)
+        {
+            metO.speed+=0.05;
+        }
         spacePressed=false;
         SpCount=0;
         fire.fX=-10;
@@ -444,6 +466,6 @@ function keyUpHandler(e) {
     
 }
 window.addEventListener('resize',function(){
-    canvas.height=window.innerHeight;
-    canvas.width=window.innerWidth;
+    canvas.height=1000;
+    canvas.width=900;
 })
