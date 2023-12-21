@@ -1,7 +1,7 @@
 # DragonKill
 ## get ready to be the dragon and save this world from aliens.
 
-Want to try : [Click here]([https://www.snagajob.com/job-descriptions/office-clerk/](https://mdaffanmafia.github.io/DragonKill/)
+Want to try : [Click here](https://mdaffanmafia.github.io/DragonKill/)
 Just press any of the arrow keys to start playing !
 
 Welcome to OfflineGame, a browser-based game built with Vanilla JavaScript, ensuring an enjoyable gaming experience even during server downtimes or in no-internet conditions.
