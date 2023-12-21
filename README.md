@@ -25,7 +25,7 @@ To get started with DragonKill, simply download or clone the repository to your 
 
 ```bash
 git clone https://github.com/YourUsername/DragonKill.git
-cd OfflineGame
+cd DragonKill
 ```
 
 Open the `index.html` file in your preferred web browser, and you're ready to play!
