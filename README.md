@@ -59,6 +59,4 @@ If you encounter any issues or have ideas for improvements, please open an issue
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 Thank you for playing OfflineGame! Have fun!
-```
 
-Feel free to customize this README according to your game's specific details and features.
